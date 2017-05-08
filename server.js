@@ -6,9 +6,10 @@ const PORT = process.env.PORT || 3000; //access default port object, if that obj
 
 app.use(function(req, res, next){ //Middleware
     if(req.headers["x-forwarded-proto"] === "http") {
-    next(); //Request process as normal
-} else {
     res.redirect("http://" + req.hostname + req.url);
+} else {
+    next(); //Request process as normal
+    
 }
 
 });
